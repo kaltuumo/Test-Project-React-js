@@ -1,0 +1,36 @@
+/* .dashboard-container {
+  display: flex;
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 30px;
+  background-color: #F1F5F9; 
+  min-height: 100vh;
+}
+
+.cards {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.card {
+  flex: 1.5px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1E293B;
+} */
