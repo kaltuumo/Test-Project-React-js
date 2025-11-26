@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
-import RegisterAdmin from "./pages/RegisterAdmin";
+import RegisterAdmin from "./pages/UserRegistration";
 import Dashboard from "./pages/Dashboard";
-import AdminProfile from "./pages/AdminProfile";
+import AdminProfile from "./pages/UserProfile";
 import PrivateRoute from "./utils/PrivateRoute";
 import MainLayout from "./layout/MainLayout";
 

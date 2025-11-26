@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate  } from "react-router-dom";
 import { FaTachometerAlt, FaUser, FaUserPlus, FaSignOutAlt } from "react-icons/fa";
-import { useAuth } from "../context/AuthContext"; // ← sax
+import { useAuth } from "../context/AuthContext"; 
 import { useState, useEffect } from "react";
 
 
@@ -56,8 +56,8 @@ const Sidebar = () => {
 
   <li>
   <Link
-    to="/admin-profile"
-    onClick={() => handleLinkClick("/admin-profile")}
+    to="/user-profile"
+    onClick={() => handleLinkClick("/user-profile")}
     className={`flex items-center gap-2 px-3 py-2 rounded transition text-sm text-black
       ${activePath === "/admin-profile" ? "bg-blue-900 shadow-md" : "hover:bg-blue-800"}`}
   >
@@ -67,10 +67,10 @@ const Sidebar = () => {
 
 <li>
   <Link
-    to="/register"
-    onClick={() => handleLinkClick("/register")}
+    to="/user-register"
+    onClick={() => handleLinkClick("/user-register")}
     className={`flex items-center gap-2 px-3 py-2 rounded transition text-sm text-black
-      ${activePath === "/register" ? "bg-blue-900 shadow-md" : "hover:bg-blue-800"}`}
+      ${activePath === "/user-register" ? "bg-blue-900 shadow-md" : "hover:bg-blue-800"}`}
   >
     <FaUserPlus className="text-black-500 opacity-70" /> Register User
   </Link>

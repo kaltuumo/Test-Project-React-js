@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import InputField from "../components/ui/input";
 import Label from "../components/ui/Label";
 import Button from "../components/ui/Button";
+
 const Login = () => {
   const { login } = useAuth(); // ← sax
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const Login = () => {
 
 
   return (
-    <div className="flex min-h-screen w-full justify-center items-center p-6">
+    <div className="flex min-h-screen bg-gray-100 w-full justify-center items-center p-6">
   <div className="max-w-md w-full p-8 bg-white rounded-xl shadow-lg">
 
         <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
