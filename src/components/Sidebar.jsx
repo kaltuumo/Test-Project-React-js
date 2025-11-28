@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate  } from "react-router-dom";
-import { FaTachometerAlt, FaUser, FaUserPlus, FaSignOutAlt } from "react-icons/fa";
+import { FaTachometerAlt, FaUser, FaUserPlus, FaSignOutAlt, FaUserFriends  } from "react-icons/fa";
 import { useAuth } from "../context/AuthContext"; 
 import { useState, useEffect } from "react";
 
@@ -73,6 +73,14 @@ const Sidebar = () => {
       ${activePath === "/user-register" ? "bg-blue-900 shadow-md" : "hover:bg-blue-800"}`}
   >
     <FaUserPlus className="text-black-500 opacity-70" /> Register User
+  </Link>
+  <Link
+    to="/user-list"
+    onClick={() => handleLinkClick("/user-list")}
+    className={`flex items-center gap-2 px-3 py-2 rounded transition text-sm text-black
+      ${activePath === "/user-list" ? "bg-blue-900 shadow-md" : "hover:bg-blue-800"}`}
+  >
+    <FaUserFriends  className="text-black-500 opacity-70" /> User List
   </Link>
 </li>
 

@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import UserProfile from "./pages/UserProfile";
 import UserRegistration from "./pages/UserRegistration";
+import UserList from "./pages/UserList";
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/user-profile" element={<UserProfile />} />
           <Route path="/user-register" element={<UserRegistration />} />
+          <Route path="/user-list" element={<UserList/>} />
+          
 
         </Routes>
       </BrowserRouter>
