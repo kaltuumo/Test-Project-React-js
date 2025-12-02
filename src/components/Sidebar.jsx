@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate  } from "react-router-dom";
-import { FaTachometerAlt, FaUser, FaSignOutAlt, FaUserFriends  } from "react-icons/fa";
+import { FaTachometerAlt, FaUser, FaSignOutAlt, FaUserFriends, FaGlobe } from "react-icons/fa";
 import { useAuth } from "../context/AuthContext"; 
 import { useState, useEffect } from "react";
 
@@ -81,6 +81,15 @@ const Sidebar = () => {
       ${activePath === "/user-list" ? "bg-blue-900 shadow-md" : "hover:bg-blue-800"}`}
   >
     <FaUserFriends  className="text-black-500 opacity-70" /> User List
+  </Link>
+
+  <Link
+    to="/zone-list"
+    onClick={() => handleLinkClick("/zone-list")}
+    className={`flex items-center gap-2 px-3 py-2 rounded transition text-sm text-black
+      ${activePath === "/zone-list" ? "bg-blue-900 shadow-md" : "hover:bg-blue-800"}`}
+  >
+    <FaGlobe   className="text-black-500 opacity-70" /> Zone
   </Link>
 </li>
 
