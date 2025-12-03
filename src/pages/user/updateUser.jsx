@@ -34,26 +34,26 @@ const UpdateUser = () => {
       <h1 className="text-2xl font-bold mb-5 text-white bg-[#2e6f7e] p-4 rounded-lg shadow-lg">Update User</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="flex flex-col gap-2">
-          <Label text="Fullname" />
+          <Label text="Fullname" /> Fullname
           <InputField type="text" placeholder="Enter fullname" value={fullname} onChange={(e) => setFullname(e.target.value)} />
         </div>
         <div className="flex flex-col gap-2">
-          <Label text="Phone" />
+          <Label text="Phone" /> Phone
           <InputField type="text" placeholder="Enter Phone" value={phone} onChange={(e) => setPhone(e.target.value)} />
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
         <div className="flex flex-col gap-2">
-          <Label text="Email" />
+          <Label text="Email" /> Email
           <InputField type="text" placeholder="Enter Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div className="flex flex-col gap-2">
-          <Label text="Status" />
+          <Label text="Status" /> Status
           <InputField type="text" placeholder="Enter Status" value={status} onChange={(e) => setStatus(e.target.value)} />
         </div>
         <div className="flex flex-col gap-2">
-          <Label text="Role" />
+          <Label text="Role" /> Role
           <InputField type="text" placeholder="Enter Role" value={role} onChange={(e) => setRole(e.target.value)} />
         </div>
       </div>

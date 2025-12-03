@@ -84,14 +84,20 @@ const ZoneList = () => {
             {filteredZones.map((z, index) => (
               <tr key={z.zoneId} className="bg-[#f7f3ee] hover:bg-[#f1ebe4] transition border-b border-[#c9c3bd]">
                 <td className="px-4 py-3 border border-[#d2ccc6]">{index + 1}</td>
-                <td className="px-4 py-3 border border-[#d2ccc6]">{z.zone}</td>
+                <td className="px-4 py-3 border border-[#d2ccc6]">{z.zoneName}</td>
                 <td className="px-4 py-3 border border-[#d2ccc6]">{z.description}</td>
-                <td className="px-4 py-3 border border-[#d2ccc6] text-gray-700">
-                  {new Date(z.createdDate).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}{" "}
-                  {new Date(z.createdDate).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
-                </td>                <td className="px-4 py-3 border border-[#d2ccc6] flex gap-3 text-xl">
-                  <span className="cursor-pointer text-orange-600 hover:text-orange-800" onClick={() => navigate("/zone-update", { state: { zones: z } })}>✏️</span>
-                  <span className="cursor-pointer text-yellow-600 hover:text-yellow-800" onClick={() => deleteZone(z.zoneId)}>🔑</span>
+               <td className="px-4 py-3 border border-[#d2ccc6] text-gray-700"> 
+                {z.createdDate && z.createdTime ? (() => {
+                   const dt = new Date(`${z.createdDate}T${z.createdTime}`);
+                    return dt.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) + " " +
+                     dt.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+                    })(
+
+                     ) : "-"}
+                     </td>
+               <td className="px-4 py-3 border border-[#d2ccc6] flex gap-3 text-xl">
+                  <span className="cursor-pointer text-orange-600 hover:text-orange-800" onClick={() => navigate("/zone-update", { state: { zone: z } })}>✏️</span>
+                  <span className="cursor-pointer text-yellow-600 hover:text-yellow-800" onClick={() => deleteZone(z._id)}>🔑</span>
                 </td>
               </tr>
             ))}

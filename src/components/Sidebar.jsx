@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate  } from "react-router-dom";
-import { FaTachometerAlt, FaUser, FaSignOutAlt, FaUserFriends, FaGlobe } from "react-icons/fa";
+import { FaTachometerAlt, FaUser, FaSignOutAlt, FaUserFriends, FaGlobe, FaPlus, FaMapMarkerAlt  } from "react-icons/fa";
 import { useAuth } from "../context/AuthContext"; 
 import { useState, useEffect } from "react";
 
@@ -82,7 +82,14 @@ const Sidebar = () => {
   >
     <FaUserFriends  className="text-black-500 opacity-70" /> User List
   </Link>
-
+   <Link
+    to="/customer-list"
+    onClick={() => handleLinkClick("/customer-list")}
+    className={`flex items-center gap-2 px-3 py-2 rounded transition text-sm text-black
+      ${activePath === "/customer-list" ? "bg-blue-900 shadow-md" : "hover:bg-blue-800"}`}
+  >
+    <FaPlus   className="text-black-500 opacity-70" /> Customer
+  </Link>
   <Link
     to="/zone-list"
     onClick={() => handleLinkClick("/zone-list")}
@@ -90,6 +97,14 @@ const Sidebar = () => {
       ${activePath === "/zone-list" ? "bg-blue-900 shadow-md" : "hover:bg-blue-800"}`}
   >
     <FaGlobe   className="text-black-500 opacity-70" /> Zone
+  </Link>
+  <Link
+    to="/area-list"
+    onClick={() => handleLinkClick("/area-list")}
+    className={`flex items-center gap-2 px-3 py-2 rounded transition text-sm text-black
+      ${activePath === "/area-list" ? "bg-blue-900 shadow-md" : "hover:bg-blue-800"}`}
+  >
+    <FaMapMarkerAlt     className="text-black-500 opacity-70" /> Area
   </Link>
 </li>
 

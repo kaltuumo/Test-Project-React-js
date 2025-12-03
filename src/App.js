@@ -10,6 +10,10 @@ import UserList from  "./pages/user/UserList";
 import UpdateUser from "./pages/user/updateUser";
 import ZoneList from "./pages/zone/ZoneList";
 import UpdateZone from "./pages/zone/UpdateZone";
+import CustomerList from "./pages/customer/CustomerList";
+import UpdateCustomer from "./pages/customer/updateCustomer";
+import AreaList from "./pages/area/AreaList";
+import UpdateArea from "./pages/area/updateArea";
 function App() {
   return (
     <AuthProvider>
@@ -23,6 +27,13 @@ function App() {
           <Route path="/user-update" element={<UpdateUser/>} />
           <Route path="/zone-list" element={<ZoneList/>} />
           <Route path="/zone-update" element={<UpdateZone/>} />
+          <Route path="/customer-list" element={<CustomerList/>} />
+          <Route path="/customer-update" element={<UpdateCustomer/>} />
+          <Route path="/area-list" element={<AreaList/>} />
+          <Route path="/area-update" element={<UpdateArea/>} />
+
+
+
           
 
         </Routes>

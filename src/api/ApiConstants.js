@@ -7,7 +7,7 @@ export const ApiConstants = {
 
   customerEndpoint: `${BASE_URL}/customer`,
   zoneEndpoint: `${BASE_URL}/zone`,
-//   areaEndpoint: `${BASE_URL}/area`,
+  areaEndpoint: `${BASE_URL}/area`,
 //   houseEndpoint: `${BASE_URL}/house`,
 //   invoiceEndpoint: `${BASE_URL}/invoice`,
 //   paymentEndpoint: `${BASE_URL}/payment`,

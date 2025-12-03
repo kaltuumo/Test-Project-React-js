@@ -14,22 +14,26 @@ export default function useZones() {
     }
   };
 
+  // Delete Zone
+ 
+  // Delete user
   const deleteZone = async (id) => {
-    if (!id) return;
-    const confirmDelete = window.confirm("Are you sure you want to delete this zone?");
-    if (!confirmDelete) return;
+  if (!id) return;
 
-    try {
-      const res = await api.delete(`${ApiConstants.zoneEndpoint}/delete-zone/${id}`);
-      if (res.data.success) {
-        setZones(prev => prev.filter(z => z.zoneId !== id));
-        alert("Zone Deleted Successfully");
-      }
-    } catch (err) {
-      console.log(err);
-      alert("Error deleting zone");
+  const confirmDelete = window.confirm("Are you sure you want to delete this zone?");
+  if (!confirmDelete) return;
+
+  try {
+    const res = await api.delete(`${ApiConstants.zoneEndpoint}/delete-zone/${id}`);
+    if (res.data.success) {
+      setZones(prev => prev.filter(z => z._id !== id));
+      alert("Zone Deleted Successfully ✔️");
     }
-  };
+  } catch (err) {
+    console.log("Delete Error:", err);
+    alert("Error deleting Zone");
+  }
+};
 
   useEffect(() => {
     fetchZones();

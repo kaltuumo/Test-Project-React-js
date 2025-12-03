@@ -139,10 +139,14 @@ const UserList = () => {
                     {u.status === "Active" ? "🟢 Active" : "🔴 Inactive"}
                   </span>
                 </td>
-                <td className="px-4 py-3 border border-[#d2ccc6] text-gray-700">
-                  {new Date(u.createdDate).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}{" "}
-                  {new Date(u.createdDate).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
-                </td>
+                <td className="px-4 py-3 border border-[#d2ccc6] text-gray-700"> 
+                {u.createdDate && u.createdTime ? (() => {
+                   const dt = new Date(`${u.createdDate}T${u.createdTime}`);
+                    return dt.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }) + " " +
+                     dt.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+                    })(
+                     ) : "-"}
+                     </td>
                 <td className="px-4 py-3 border border-[#d2ccc6] flex gap-3 text-xl">
                   <span className="cursor-pointer text-orange-600 hover:text-orange-800" onClick={() => navigate("/user-update", { state: { user: u } })}>✏️</span>
                   <span className="cursor-pointer text-yellow-600 hover:text-yellow-800" onClick={() => deleteUser(u.userId)}>🔑</span>
