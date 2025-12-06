@@ -106,7 +106,7 @@ const Sidebar = () => {
   >
     <FaMapMarkerAlt     className="text-black-500 opacity-70" /> Area
   </Link>
-  <Link
+   <Link
     to="/house-list"
     onClick={() => handleLinkClick("/house-list")}
     className={`flex items-center gap-2 px-3 py-2 rounded transition text-sm text-black

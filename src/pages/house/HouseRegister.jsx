@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {   useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import useHouses from "../../hooks/house/useHouses";
 import useHouseForm from "../../hooks/house/useHouseForm";
 import useZones from "../../hooks/zone/useZones";
@@ -10,12 +10,11 @@ import Label from "../../components/ui/Label";
 import api from "../../api/api";
 import { ApiConstants } from "../../api/ApiConstants";
 
-const HouseList = () => {
-  // const navigate = useNavigate();
+const HouseRegister = () => {
   const location = useLocation(); 
   const house = location.state?.house;
 
-  const {  setHouses } = useHouses();
+  const { setHouses } = useHouses();
   const { zones, fetchZones } = useZones();
   const { areas, fetchAreas } = useArea();
   
@@ -48,7 +47,7 @@ const HouseList = () => {
       setAreaName(house.areaName || "");
       setCity(house.city || "");
     }
-  }, [ setCustomerNo, setFullname, setPhone, setZoneName, setAreaName, setCity]);
+  }, [house, setCustomerNo, setFullname, setPhone, setZoneName, setAreaName, setCity]);
 
   const handleRegisterHouse = async () => {
     if (!fullname || !phone || !zoneName || !areaName || !city) {
@@ -59,10 +58,9 @@ const HouseList = () => {
     setLoading(true);
     try {
       const res = await api.post(
-     `${ApiConstants.houseEndpoint}/create-house`,
-     { fullname, phone, zoneName, areaName, city }
-    );
-
+        `${ApiConstants.houseEndpoint}/create-house`,
+        { fullname, phone, zoneName, areaName, city }
+      );
 
       if (res.data.success) {
         setHouses(prev => [...prev, { ...res.data.result }]);
@@ -78,7 +76,6 @@ const HouseList = () => {
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
-
       <h1 className="text-2xl font-bold mb-5 text-white bg-[#2e6f7e] p-4 rounded-lg shadow-lg">
         House Registration
       </h1>
@@ -150,24 +147,14 @@ const HouseList = () => {
         </div>
       </div>
 
-      <div className="flex gap-4 mb-4 mt-6">
-        <div className="flex-1">
-          <Label text="City" /> City
-          <InputField
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            placeholder="Enter City"
-          />
-        </div>
-
-        <div className="flex-1">
-          <Label text="Phone" /> Phone
-          <InputField
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            placeholder="Enter Phone Number"
-          />
-        </div>
+      {/* City */}
+      <div className="mb-6">
+        <Label text="City" /> City
+        <InputField
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          placeholder="Enter City"
+        />
       </div>
 
       <div className="mb-6 mt-6">
@@ -183,4 +170,4 @@ const HouseList = () => {
   );
 };
 
-export default HouseList;
+export default HouseRegister;

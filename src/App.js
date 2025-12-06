@@ -19,6 +19,8 @@ import AreaList from "./pages/area/AreaList";
 import UpdateArea from "./pages/area/updateArea";
 import HouseRegister from "./pages/house/HouseRegister";
 import HouseList from "./pages/house/HouseList";
+import ElectricRegister from "./pages/electric/ElectricRegister";
+import InvoiceRegister from "./pages/invoice/InvoiceRegister";
 
 function App() {
   return (
@@ -45,6 +47,9 @@ function App() {
             <Route path="/area-update" element={<UpdateArea />} />
             <Route path="/house-regsiter" element={<HouseRegister />} />
             <Route path="/house-list" element={<HouseList />} />
+            <Route path="/electric-register" element={<ElectricRegister />} />
+            <Route path="/invoice-register" element={<InvoiceRegister />} />
+
 
           </Route>
 

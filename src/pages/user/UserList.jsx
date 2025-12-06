@@ -114,7 +114,6 @@ const UserList = () => {
           <thead>
             <tr className="bg-[#2e6f7e] text-white text-[15px]">
               <th className="px-4 py-3 border border-[#1f3e4d]">#</th>
-              <th className="px-4 py-3 border border-[#1f3e4d]">ID</th>
               <th className="px-4 py-3 border border-[#1f3e4d]">User</th>
               <th className="px-4 py-3 border border-[#1f3e4d]">Magaca</th>
               <th className="px-4 py-3 border border-[#1f3e4d]">Role</th>
@@ -127,7 +126,6 @@ const UserList = () => {
             {filteredUsers.map((u, index) => (
               <tr key={u.userId} className="bg-[#f7f3ee] hover:bg-[#f1ebe4] transition border-b border-[#c9c3bd]">
                 <td className="px-4 py-3 border border-[#d2ccc6]">{index + 1}</td>
-                <td className="px-4 py-3 border border-[#d2ccc6]">{u.userId}</td>
                 <td className="px-4 py-3 border border-[#d2ccc6]">{u.userCode}</td>
                 <td className="px-4 py-3 border border-[#d2ccc6]">{u.fullname}</td>
                 <td className="px-4 py-3 border border-[#d2ccc6]">{u.role}</td>
@@ -136,7 +134,7 @@ const UserList = () => {
                     u.status === "Active" ? "bg-green-50 text-green-700 border border-green-400 shadow-green-100" :
                     "bg-red-50 text-red-700 border border-red-400 shadow-red-100"
                   }`} style={{ letterSpacing: "0.5px" }}>
-                    {u.status === "Active" ? "🟢 Active" : "🔴 Inactive"}
+                    {u.status === "Active" ? "🟢 Active" : "🔴 InAtive"}
                   </span>
                 </td>
                 <td className="px-4 py-3 border border-[#d2ccc6] text-gray-700"> 
