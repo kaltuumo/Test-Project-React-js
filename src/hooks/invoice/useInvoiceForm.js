@@ -13,30 +13,31 @@ export default function useInvoiceForm(initialValues = {}) {
   const [status, setStatus] = useState(initialValues.status || "Unpaid");
   const [houseNo, setHouseNo] = useState(initialValues.houseNo || "");
   const [watchNo, setWatchNo] = useState(initialValues.watchNo || "");
-
-  // Editable KWH
-  const [kwhUsed, setKwhUsed] = useState(initialValues.kwhUsed || 0);
- 
+  
   // Calculated fields
+  const [kwhUsed, setKwhUsed] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
   const [required, setRequired] = useState(0);
   const [remaining, setRemaining] = useState(0);
 
   const [loading, setLoading] = useState(false);
 
-  const UNIT_PRICE = 1;
+  const UNIT_PRICE = 0.5; // 1 currency per kWh, adjust as needed
 
-  // Auto-calculate totals whenever kwhUsed, discount, or paid change
+  // Auto-calculate fields whenever relevant values change
   useEffect(() => {
-     const usedUnits = afterRead - beforeRead; // KWH used
-    const total = Number((usedUnits * kwhUsed).toFixed(2)); // Total before discount
-    const req = Number((total - discount).toFixed(2));       // Total after discount
-    const rem = Number((req - paid).toFixed(2))
+     const calculatedKwh = Math.max(afterRead - beforeRead, 0);
+  const UNIT_PRICE = 0.5; // price per kWh
+  const calculatedTotal = calculatedKwh * UNIT_PRICE;
+  const calculatedRequired = calculatedTotal - discount;
+  const calculatedRemaining = Math.max(calculatedRequired - paid, 0);
 
-    setTotalAmount(total);
-    setRequired(req);
-    setRemaining(rem);
-  }, [kwhUsed, discount, paid]);
+
+    setKwhUsed(calculatedKwh);
+  setTotalAmount(calculatedTotal);
+  setRequired(calculatedRequired);
+  setRemaining(calculatedRemaining);
+}, [beforeRead, afterRead, discount, paid]);
 
   const resetForm = () => {
     setFullname("");
@@ -70,8 +71,7 @@ export default function useInvoiceForm(initialValues = {}) {
     status, setStatus,
     houseNo, setHouseNo,
     watchNo, setWatchNo,
-    kwhUsed, setKwhUsed,  // ✅ Important: export setKwhUsed
-    totalAmount, required, remaining,
+  kwhUsed, setKwhUsed,   // ✅ Halkan waa in la add gareeyaa
     loading, setLoading,
     resetForm
   };

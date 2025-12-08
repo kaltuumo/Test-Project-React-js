@@ -46,6 +46,7 @@ const InvoiceList = () => {
         <th className="px-4 py-3 border border-[#1f3e4d]">Macaamiil</th>
         <th className="px-4 py-3 border border-[#1f3e4d]">Lacagta</th>
         <th className="px-4 py-3 border border-[#1f3e4d]">Status</th>
+        <th className="px-4 py-3 border border-[#1f3e4d]">Remaining</th>
         <th className="px-4 py-3 border border-[#1f3e4d]">Created</th>
         <th className="px-4 py-3 border border-[#1f3e4d]">Action</th>
       </tr>
@@ -55,11 +56,11 @@ const InvoiceList = () => {
       {filteredInvoices.map((i, index) => {
         const rowColor =
           i.status === "Paid"
-            ? "bg-green-50"
+            ? "bg-green-300"
             : i.status === "Unpaid"
-            ? "bg-red-50"
+            ? "bg-red-300"
             : i.status === "Pending"
-            ? "bg-yellow-50"
+            ? "bg-yellow-300"
             : "bg-[#f7f3ee]";
 
         return (
@@ -90,6 +91,9 @@ const InvoiceList = () => {
               }`}
             >
               {i.status}
+            </td>
+             <td className="px-4 py-3 border border-[#d2ccc6]">
+              {i.remaining}
             </td>
 
             <td className="px-4 py-3 border border-[#d2ccc6]">

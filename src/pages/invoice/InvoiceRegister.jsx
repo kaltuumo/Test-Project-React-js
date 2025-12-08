@@ -165,7 +165,7 @@ const InvoiceRegister = () => {
         </div>
 
         <div>
-          <Label text="Paid" /> Paid
+          <Label text="Paid" />  Paid
           <InputField type="number" value={paid} onChange={(e) => setPaid(Number(e.target.value))} />
         </div>
 
