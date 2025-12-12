@@ -2,42 +2,54 @@ import { useState, useEffect } from "react";
 import api from "../../api/api";
 import { ApiConstants } from "../../api/ApiConstants";
 
-export default function useHouses() {
+export default function useInvoice() {
   const [invoices, setInvoices] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Fetch all customers
   const fetchInvoices = async () => {
     try {
+      setLoading(true);
       const res = await api.get(`${ApiConstants.invoiceEndpoint}/all-invoice`);
-      if (res.data.success) setInvoices(res.data.data);
+      console.log("Fetched invoices:", res.data); // ✅ debug
+      // fix here: take data array instead of result
+      setInvoices(res.data.data || []);
     } catch (err) {
-      console.log("Fetch Electric error:", err);
+      console.error("Error fetching invoices:", err);
+    } finally {
+      setLoading(false);
     }
   };
 
-//   // Delete customer
-//   const deleteHouse = async (id) => {
-//     if (!id) return;
+  const createInvoice = async (data) => {
+    try {
+      setLoading(true);
 
-//     const confirmDelete = window.confirm("Are you sure you want to delete this customer?");
-//     if (!confirmDelete) return;
+      // Auto-generate HouseNo & WatchNo if empty
+      let lastInvoice = invoices.length ? invoices[invoices.length - 1] : null;
 
-//     try {
-//       const res = await api.delete(`${ApiConstants.houseEndpoint}/delete-house/${id}`);
-//       if (res.data.success) {
-//         setHouses((prev) => prev.filter((h) => h._id !== id));
-//         alert("House deleted successfully ✔️");
-//       }
-//     } catch (err) {
-//       console.log("Delete error:", err);
-//       alert("Error deleting House");
-//     }
-//   };
+      if (!data.houseNo) {
+        const lastHouse = lastInvoice ? parseInt(lastInvoice.houseNo.replace(/\D/g, "")) : 0;
+        data.houseNo = "H" + String(lastHouse + 1).padStart(3, "0");
+      }
+      if (!data.watchNo) {
+        const lastWatch = lastInvoice ? parseInt(lastInvoice.watchNo.replace(/\D/g, "")) : 0;
+        data.watchNo = "W" + String(lastWatch + 1).padStart(3, "0");
+      }
+
+      const res = await api.post(`${ApiConstants.invoiceEndpoint}/create-invoice`, data);
+      setInvoices(prev => [...prev, res.data.result]);
+      return res.data;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     fetchInvoices();
   }, []);
 
-  return { invoices, setInvoices, loading, setLoading, fetchInvoices };
+  return { invoices, loading, fetchInvoices, createInvoice };
 }

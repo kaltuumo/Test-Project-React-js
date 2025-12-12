@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate  } from "react-router-dom";
-import { FaFileInvoice, FaTachometerAlt, FaUser, FaSignOutAlt, FaUserFriends, FaGlobe, FaPlus, FaMapMarkerAlt, FaHome  } from "react-icons/fa";
+import {FaDollarSign, FaFileInvoice, FaTachometerAlt, FaUser, FaSignOutAlt, FaUserFriends, FaGlobe, FaPlus, FaMapMarkerAlt, FaHome  } from "react-icons/fa";
 import { useAuth } from "../context/AuthContext"; 
 import { useState, useEffect } from "react";
 
@@ -121,6 +121,14 @@ const Sidebar = () => {
       ${activePath === "/invoice-list" ? "bg-blue-900 shadow-md" : "hover:bg-blue-800"}`}
   >
     <FaFileInvoice  className="text-black-500 opacity-70" /> Biilasha
+  </Link>
+   <Link
+    to="/lacag-qabasho"
+    onClick={() => handleLinkClick("/lacag-qabasho")}
+    className={`flex items-center gap-2 px-3 py-2 rounded transition text-sm text-black
+      ${activePath === "/lacag-qabasho" ? "bg-blue-900 shadow-md" : "hover:bg-blue-800"}`}
+  >
+    <FaDollarSign  className="text-black-500 opacity-70" /> Lacag Qabasho
   </Link>
 </li>
 

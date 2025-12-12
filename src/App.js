@@ -21,6 +21,9 @@ import ElectricRegister from "./pages/electric/ElectricRegister";
 import InvoiceRegister from "./pages/invoice/InvoiceRegister";
 import InvoiceList from "./pages/invoice/InvoiceList";
 import InvoicePayment from "./pages/invoice/InvoicePayment";
+import ReceiptPaymentPage from "./pages/invoice/ReceiptPaymentPage";
+import LacagQabasho from "./pages/invoice/LacagQabasho";
+import Receipt from "./pages/invoice/Receipt";
 
 function App() {
   return (
@@ -51,6 +54,12 @@ function App() {
             <Route path="/invoice-register" element={<InvoiceRegister />} />
             <Route path="/invoice-list" element={<InvoiceList />} />
             <Route path="/invoice-payment" element={<InvoicePayment />} />
+            <Route path="/receipt-payment" element={<ReceiptPaymentPage />} />
+            <Route path="/lacag-qabasho" element={<LacagQabasho />} />
+            <Route path="/receipt" element={<Receipt />} />
+
+
+
           </Route>
 
         </Routes>
